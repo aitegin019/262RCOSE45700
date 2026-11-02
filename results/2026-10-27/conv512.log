@@ -1,0 +1,79 @@
+Running Eager Mode...
+Eager Mode successful!
+Running Compile Mode...
+[31mERROR[0m [2mfuriosa_torch::python_ext[0m[2m:[0m eager fallback is not allowed for the target gm
+Traceback (most recent call last):
+  File "/root/furiosa-project/test_conv512.py", line 35, in <module>
+    result = compiled(x)
+             ^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 465, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 953, in compile_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/external_utils.py", line 67, in inner
+    @functools.wraps(fn)
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/torch_compile.py", line 230, in forward
+    raise e from None
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/torch_compile.py", line 218, in forward
+    split_gm, filter_inputs = _build_segmented(
+                              ^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/torch_compile.py", line 186, in _build_segmented
+    cm = CompileModule.from_module(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_module/runnable.py", line 240, in from_module
+    return cls.from_exported(
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_module/runnable.py", line 222, in from_exported
+    compiler.compile(exported, compiler_config, task_name=task_name)
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/profiler/__init__.py", line 35, in wrapped
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/compiler/__init__.py", line 94, in compile
+    raise error.UnsupportedOpError(
+furiosa.torch._C.error.UnsupportedOpError: failed to compile
+graph():
+    %l_args_0_ : [num_users=1] = placeholder[target=l_args_0_]
+    %l_fn_parameters_weight_ : [num_users=1] = placeholder[target=l_fn_parameters_weight_]
+    %l_fn_parameters_bias_ : [num_users=1] = placeholder[target=l_fn_parameters_bias_]
+    %convolution : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%l_args_0_, %l_fn_parameters_weight_, %l_fn_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    return (convolution,)
+source:
+    convolution          ../venv/lib/python3.12/site-packages/furiosa/torch/_backend/torch_compile.py:218 split_gm, filter_inputs = _build_segmented(
+compile error:
+(cache at /root/.cache/furiosa/compiler/660ff3692e662002)
+
+Caused by:
+   0: O157 lowering failed: TransposedLower[bf16]([]|[Broadcast=1]|[0_1=512:4608, 1_1=512:9, 2_1=3:3, 3_1=3:1])
+      -> [] | [] | [0_32=8, 1_64=8] | [0_256=2, 0_1=32, 1_1=64, 2_1=3] | [3_1=3](4)
+      -> (E) [0_256=2]|[]|[]|[0_32=8, 1_64=8]|[0_1=32, 2_1=3, 3_1=3]|[1_1=64](8) @ [0=512, 1=512, 2=3, 3=3]
+   1: while verifying LowLevelTailCrop
+   2: verification of operator failed:
+      LowLevelTailCrop
+      broadcast_axes: [AxisIndex(0), AxisIndex(2), AxisIndex(4), AxisIndex(6)]
+      name: 
+
+      input tensors: 1
+        input T7: [] | [] | [A3_1=8, E_12=1, A2_1=8, E_12=1] | [A1_1=32, E_12=1, A0_1=16, E_3=4, E_1=3] | [TAIL_1=8](4), 6291456 B, bf16, sram
+        source: unknown
+        total bytes: 6291456
+      output tensors: 1
+        output T12: [] | [] | [A3_1=8, E_12=1, A2_1=8, E_12=1] | [A1_1=32, E_12=1, A0_1=16, E_3=4, E_1=3] | [TAIL_1=4](4), 3145728 B, bf16, sram
+        source: unknown
+        total bytes: 3145728
+   3: Condition failed: `tensors.try_get(input)?
+      .element_type.size_in_bytes_with_length(input_shape.slice_volume()) <=
+      u16::MAX as usize`
+
+Location:
+    /usr/local/cargo/git/checkouts/npu-tools-dec42ebd45bb55cf/fc43f6a7/crates/global-compiler/src/lib.rs:65:30

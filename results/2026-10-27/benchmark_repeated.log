@@ -1,0 +1,20 @@
+===== Experiment 1 =====
+Eager latency: 0.883 ms
+Compile latency: 0.425 ms
+Speedup: 2.08x
+===== Experiment 2 =====
+Eager latency: 0.908 ms
+Compile latency: 0.435 ms
+Speedup: 2.09x
+===== Experiment 3 =====
+Eager latency: 0.882 ms
+Compile latency: 0.423 ms
+Speedup: 2.08x
+===== Experiment 4 =====
+Eager latency: 0.913 ms
+Compile latency: 0.426 ms
+Speedup: 2.14x
+===== Experiment 5 =====
+Eager latency: 0.896 ms
+Compile latency: 0.423 ms
+Speedup: 2.11x

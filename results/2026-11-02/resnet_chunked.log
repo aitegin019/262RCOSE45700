@@ -1,0 +1,16 @@
+Preparing ResNet-18 with random weights.
+Chunked: layer4.0.conv1
+Chunked: layer4.0.conv2
+Chunked: layer4.0.downsample.0
+Chunked: layer4.1.conv1
+Chunked: layer4.1.conv2
+Replaced 5 convolutions.
+Original fused CPU vs chunked CPU: max_diff=0.00000000, finite=True, outputs_close=True
+Running chunked ResNet NPU Eager...
+CPU reference vs NPU Eager: max_diff=0.01562500, finite=True, outputs_close=True
+Compiling chunked ResNet...
+Chunked ResNet Compile completed.
+CPU reference vs NPU Compile: max_diff=0.01562500, finite=True, outputs_close=True
+NPU Eager vs Compile: max_diff=0.01562500, finite=True, outputs_close=True
+
+SUCCESS: chunked ResNet-18 passed for this input.

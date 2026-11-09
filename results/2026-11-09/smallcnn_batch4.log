@@ -1,0 +1,38 @@
+
+Testing seed=43, batch=4
+NPU Eager completed.
+NPU Compile completed.
+CPU_vs_Eager: max_diff=0.00000000, finite=True, outputs_close=True
+CPU_vs_Compile: max_diff=0.00000000, finite=True, outputs_close=True
+Eager_vs_Compile: max_diff=0.00000000, finite=True, outputs_close=True
+
+Testing seed=44, batch=4
+NPU Eager completed.
+NPU Compile completed.
+CPU_vs_Eager: max_diff=0.00000000, finite=True, outputs_close=True
+CPU_vs_Compile: max_diff=0.00006104, finite=True, outputs_close=True
+Eager_vs_Compile: max_diff=0.00006104, finite=True, outputs_close=True
+
+Testing seed=45, batch=4
+NPU Eager completed.
+NPU Compile completed.
+CPU_vs_Eager: max_diff=0.00003052, finite=True, outputs_close=True
+CPU_vs_Compile: max_diff=0.00000000, finite=True, outputs_close=True
+Eager_vs_Compile: max_diff=0.00003052, finite=True, outputs_close=True
+
+Testing seed=46, batch=4
+NPU Eager completed.
+NPU Compile completed.
+CPU_vs_Eager: max_diff=0.00000000, finite=True, outputs_close=True
+CPU_vs_Compile: max_diff=0.00000000, finite=True, outputs_close=True
+Eager_vs_Compile: max_diff=0.00000000, finite=True, outputs_close=True
+
+Testing seed=47, batch=4
+NPU Eager completed.
+NPU Compile completed.
+CPU_vs_Eager: max_diff=0.00001526, finite=True, outputs_close=True
+CPU_vs_Compile: max_diff=0.00000000, finite=True, outputs_close=True
+Eager_vs_Compile: max_diff=0.00001526, finite=True, outputs_close=True
+
+Finished: 0 failed comparisons out of 15.
+SUCCESS: all five inputs passed with CPU fallback disabled.

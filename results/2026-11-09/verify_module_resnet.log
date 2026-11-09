@@ -1,0 +1,11 @@
+Chunked: layer4.0.conv1
+Chunked: layer4.0.conv2
+Chunked: layer4.0.downsample.0
+Chunked: layer4.1.conv1
+Chunked: layer4.1.conv2
+Running NPU Eager...
+Running NPU Compile...
+CPU vs Eager: PASS, max_diff=0.01562500
+CPU vs Compile: PASS, max_diff=0.01562500
+Eager vs Compile: PASS, max_diff=0.01562500
+SUCCESS: resnet18_chunked module verified on NPU.

@@ -1,0 +1,114 @@
+Chunked: layer4.0.conv1
+Chunked: layer4.0.conv2
+Chunked: layer4.0.downsample.0
+Chunked: layer4.1.conv1
+Chunked: layer4.1.conv2
+Replaced 5 convolutions.
+
+Testing seed=43, batch=4
+Traceback (most recent call last):
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/compiler/__init__.py", line 83, in compile
+    runnable = compiler.compile(
+               ^^^^^^^^^^^^^^^^^
+furiosa.torch._C.error.CompileError: (cache at /root/.cache/furiosa/compiler/530d6afd5dc00d8b)
+
+Caused by:
+    insufficient sequencer entries: required 9
+
+Location:
+    /usr/local/cargo/git/checkouts/npu-tools-dec42ebd45bb55cf/fc43f6a7/crates/global-compiler/src/lib.rs:60:26
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/furiosa-project/test_resnet_batch4.py", line 65, in <module>
+    eager = model(x_npu).cpu().float()
+            ^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 285, in forward
+    return self._forward_impl(x)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 275, in _forward_impl
+    x = self.layer3(x)
+        ^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 96, in forward
+    out = self.conv2(out)
+          ^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 553, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 548, in _conv_forward
+    return F.conv2d(
+           ^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/eager.py", line 19, in run_aten_op
+    return _run_aten_op(qualified_aten_op_name, op_callable, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/eager.py", line 42, in _run_aten_op
+    raise e
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/eager.py", line 38, in _run_aten_op
+    m = aten_op.compile_and_load(device)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/aten.py", line 173, in compile_and_load
+    return _compile_and_load_cached(self, device).out()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/aten.py", line 28, in out
+    raise self.cached.with_traceback(self.original_traceback)
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/aten.py", line 96, in _compile
+    compiled = CompileModule.from_exported(exported, task_name=task_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_module/runnable.py", line 222, in from_exported
+    compiler.compile(exported, compiler_config, task_name=task_name)
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/profiler/__init__.py", line 35, in wrapped
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/compiler/__init__.py", line 94, in compile
+    raise error.UnsupportedOpError(
+furiosa.torch._C.error.UnsupportedOpError: failed to compile
+graph():
+    %args_0 : [num_users=1] = placeholder[target=args_0]
+    %args_1 : [num_users=1] = placeholder[target=args_1]
+    %args_2 : [num_users=1] = placeholder[target=args_2]
+    %convolution : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%args_0, %args_1, %args_2, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    return (convolution,)
+source:
+    convolution          ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+compile error:
+(cache at /root/.cache/furiosa/compiler/530d6afd5dc00d8b)
+
+Caused by:
+    insufficient sequencer entries: required 9
+
+Location:
+    /usr/local/cargo/git/checkouts/npu-tools-dec42ebd45bb55cf/fc43f6a7/crates/global-compiler/src/lib.rs:60:26

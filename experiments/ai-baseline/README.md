@@ -57,9 +57,13 @@ These are preliminary measurements for this model and configuration.
 - Inputs are already on the NPU before timing starts.
 - Timing includes the model call and output transfer to CPU.
 - Input transfer and first-run compilation costs are excluded.
-- CPU fallback behavior has not yet been explicitly verified.
+- CPU fallback was not explicitly disabled in the October 27 benchmarks.
+  Later correctness tests passed with fallback disabled, but this does
+  not retroactively verify the execution path of the October timings.
 - Output comparisons use rtol=1e-2 and atol=1e-2.
-- The scripts currently print correctness failures without stopping.
+- The original October scripts print correctness failures without
+  stopping. The newer validation scripts return a failure status if
+  comparisons fail.
 - Models use random weights and synthetic inputs.
 - Output agreement does not establish classification accuracy.
 
@@ -72,8 +76,32 @@ Recorded standalone convolution tests succeeded at 64, 128, and
 compilation with TransposedLower/LowLevelTailCrop errors.
 
 The mentor suggested splitting output channels into chunks of 128
-and concatenating the outputs. This workaround has not yet been
-validated in these recorded experiments.
+and concatenating the outputs.
+
+## Follow-up validation through November 9
+
+CPU fallback was disabled during the following NPU correctness checks.
+Working tolerances were rtol=1e-2 and atol=1e-2.
+
+- The standalone chunked 512-channel convolution passed for three inputs.
+- SmallCNN passed five inputs at each batch size: 1, 4, 8, and 16.
+  All 60 CPU-reference/Eager/Compile comparisons passed.
+- BatchNorm-fused, chunked ResNet-18 passed five inputs at batch 1.
+  All 15 CPU-reference/Eager/Compile comparisons passed.
+- Modified ResNet batch 4 failed during NPU Eager execution with
+  "insufficient sequencer entries: required 9".
+  It did not reach the full-model Compile comparison.
+
+These results validate the tested configurations within the stated
+tolerances. They do not establish classification accuracy or replace
+the need for controlled performance measurements.
+
+Follow-up evidence:
+- results/2026-11-02/
+- results/2026-11-09/
+
+For reusable model code and integration instructions, see
+[models/README.md](../../models/README.md).
 
 ## AI assistance
 

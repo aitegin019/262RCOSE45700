@@ -1,0 +1,16 @@
+seed,batch,comparison,max_abs_diff,finite,outputs_close,rtol,atol
+43,1,CPU_vs_Eager,0.0,True,True,0.01,0.01
+43,1,CPU_vs_Compile,0.0,True,True,0.01,0.01
+43,1,Eager_vs_Compile,0.0,True,True,0.01,0.01
+44,1,CPU_vs_Eager,0.0,True,True,0.01,0.01
+44,1,CPU_vs_Compile,0.0,True,True,0.01,0.01
+44,1,Eager_vs_Compile,0.0,True,True,0.01,0.01
+45,1,CPU_vs_Eager,0.0,True,True,0.01,0.01
+45,1,CPU_vs_Compile,0.0,True,True,0.01,0.01
+45,1,Eager_vs_Compile,0.0,True,True,0.01,0.01
+46,1,CPU_vs_Eager,0.0,True,True,0.01,0.01
+46,1,CPU_vs_Compile,0.0,True,True,0.01,0.01
+46,1,Eager_vs_Compile,0.0,True,True,0.01,0.01
+47,1,CPU_vs_Eager,0.0,True,True,0.01,0.01
+47,1,CPU_vs_Compile,0.0,True,True,0.01,0.01
+47,1,Eager_vs_Compile,0.0,True,True,0.01,0.01

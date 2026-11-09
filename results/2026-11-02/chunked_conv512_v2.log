@@ -1,0 +1,27 @@
+Testing 512-channel convolution with chunks of 128.
+
+Input seed: 42
+Original CPU reference completed.
+Chunked Eager completed.
+Chunked Compile completed.
+CPU reference vs chunked NPU Eager: max_diff=0.00000000, finite=True, outputs_close=True
+CPU reference vs chunked NPU Compile: max_diff=0.00003052, finite=True, outputs_close=True
+Chunked Eager vs Compile: max_diff=0.00003052, finite=True, outputs_close=True
+
+Input seed: 43
+Original CPU reference completed.
+Chunked Eager completed.
+Chunked Compile completed.
+CPU reference vs chunked NPU Eager: max_diff=0.00012207, finite=True, outputs_close=True
+CPU reference vs chunked NPU Compile: max_diff=0.00012207, finite=True, outputs_close=True
+Chunked Eager vs Compile: max_diff=0.00000000, finite=True, outputs_close=True
+
+Input seed: 44
+Original CPU reference completed.
+Chunked Eager completed.
+Chunked Compile completed.
+CPU reference vs chunked NPU Eager: max_diff=0.00390625, finite=True, outputs_close=True
+CPU reference vs chunked NPU Compile: max_diff=0.00390625, finite=True, outputs_close=True
+Chunked Eager vs Compile: max_diff=0.00000000, finite=True, outputs_close=True
+
+SUCCESS: all three inputs passed.

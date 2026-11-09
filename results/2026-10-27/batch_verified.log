@@ -1,0 +1,9 @@
+Batch,Eager_ms,Compile_ms,Speedup
+Batch 1: max_diff=0.000000, outputs_close=True
+1,0.913,0.424,2.15
+Batch 4: max_diff=0.000000, outputs_close=True
+4,1.194,0.643,1.86
+Batch 8: max_diff=0.000000, outputs_close=True
+8,1.810,1.100,1.65
+Batch 16: max_diff=0.000061, outputs_close=True
+16,2.915,2.009,1.45

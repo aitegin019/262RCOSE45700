@@ -1,0 +1,8 @@
+Benchmarking Eager...
+Eager average latency: 0.882 ms
+Benchmarking Compile...
+Compile average latency: 0.424 ms
+\n===== PERFORMANCE RESULTS =====
+Eager latency: 0.882 ms
+Compile latency: 0.424 ms
+Speedup: 2.08x

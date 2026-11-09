@@ -1,0 +1,242 @@
+[31mERROR[0m [2mfuriosa_torch::python_ext[0m[2m:[0m eager fallback is not allowed for the target gm
+Loading ResNet-18...
+Fusing BatchNorm layers...
+Running Eager Mode...
+Eager Mode successful!
+Preparing Compile Mode...
+Running Compile Mode...
+Traceback (most recent call last):
+  File "/root/furiosa-project/resnet_fused_128.py", line 61, in <module>
+    compiled_output = compiled_model(x)
+                      ^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 465, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 953, in compile_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 284, in forward
+    def forward(self, x: Tensor) -> Tensor:
+  File "/root/venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/torch_compile.py", line 230, in forward
+    raise e from None
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/torch_compile.py", line 218, in forward
+    split_gm, filter_inputs = _build_segmented(
+                              ^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_backend/torch_compile.py", line 186, in _build_segmented
+    cm = CompileModule.from_module(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_module/runnable.py", line 240, in from_module
+    return cls.from_exported(
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/_module/runnable.py", line 222, in from_exported
+    compiler.compile(exported, compiler_config, task_name=task_name)
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/profiler/__init__.py", line 35, in wrapped
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/furiosa/torch/compiler/__init__.py", line 94, in compile
+    raise error.UnsupportedOpError(
+furiosa.torch._C.error.UnsupportedOpError: failed to compile
+graph():
+    %l_x_ : [num_users=1] = placeholder[target=l_x_]
+    %l_self_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_conv1_parameters_weight_]
+    %l_self_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_conv1_parameters_bias_]
+    %l_self_modules_layer1_modules_0_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer1_modules_0_modules_conv1_parameters_weight_]
+    %l_self_modules_layer1_modules_0_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer1_modules_0_modules_conv1_parameters_bias_]
+    %l_self_modules_layer1_modules_0_modules_conv2_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer1_modules_0_modules_conv2_parameters_weight_]
+    %l_self_modules_layer1_modules_0_modules_conv2_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer1_modules_0_modules_conv2_parameters_bias_]
+    %l_self_modules_layer1_modules_1_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer1_modules_1_modules_conv1_parameters_weight_]
+    %l_self_modules_layer1_modules_1_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer1_modules_1_modules_conv1_parameters_bias_]
+    %l_self_modules_layer1_modules_1_modules_conv2_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer1_modules_1_modules_conv2_parameters_weight_]
+    %l_self_modules_layer1_modules_1_modules_conv2_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer1_modules_1_modules_conv2_parameters_bias_]
+    %l_self_modules_layer2_modules_0_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_0_modules_conv1_parameters_weight_]
+    %l_self_modules_layer2_modules_0_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_0_modules_conv1_parameters_bias_]
+    %l_self_modules_layer2_modules_0_modules_conv2_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_0_modules_conv2_parameters_weight_]
+    %l_self_modules_layer2_modules_0_modules_conv2_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_0_modules_conv2_parameters_bias_]
+    %l_self_modules_layer2_modules_0_modules_downsample_modules_0_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_0_modules_downsample_modules_0_parameters_weight_]
+    %l_self_modules_layer2_modules_0_modules_downsample_modules_0_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_0_modules_downsample_modules_0_parameters_bias_]
+    %l_self_modules_layer2_modules_1_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_1_modules_conv1_parameters_weight_]
+    %l_self_modules_layer2_modules_1_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_1_modules_conv1_parameters_bias_]
+    %l_self_modules_layer2_modules_1_modules_conv2_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_1_modules_conv2_parameters_weight_]
+    %l_self_modules_layer2_modules_1_modules_conv2_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer2_modules_1_modules_conv2_parameters_bias_]
+    %l_self_modules_layer3_modules_0_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_0_modules_conv1_parameters_weight_]
+    %l_self_modules_layer3_modules_0_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_0_modules_conv1_parameters_bias_]
+    %l_self_modules_layer3_modules_0_modules_conv2_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_0_modules_conv2_parameters_weight_]
+    %l_self_modules_layer3_modules_0_modules_conv2_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_0_modules_conv2_parameters_bias_]
+    %l_self_modules_layer3_modules_0_modules_downsample_modules_0_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_0_modules_downsample_modules_0_parameters_weight_]
+    %l_self_modules_layer3_modules_0_modules_downsample_modules_0_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_0_modules_downsample_modules_0_parameters_bias_]
+    %l_self_modules_layer3_modules_1_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_1_modules_conv1_parameters_weight_]
+    %l_self_modules_layer3_modules_1_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_1_modules_conv1_parameters_bias_]
+    %l_self_modules_layer3_modules_1_modules_conv2_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_1_modules_conv2_parameters_weight_]
+    %l_self_modules_layer3_modules_1_modules_conv2_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer3_modules_1_modules_conv2_parameters_bias_]
+    %l_self_modules_layer4_modules_0_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_0_modules_conv1_parameters_weight_]
+    %l_self_modules_layer4_modules_0_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_0_modules_conv1_parameters_bias_]
+    %l_self_modules_layer4_modules_0_modules_conv2_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_0_modules_conv2_parameters_weight_]
+    %l_self_modules_layer4_modules_0_modules_conv2_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_0_modules_conv2_parameters_bias_]
+    %l_self_modules_layer4_modules_0_modules_downsample_modules_0_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_0_modules_downsample_modules_0_parameters_weight_]
+    %l_self_modules_layer4_modules_0_modules_downsample_modules_0_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_0_modules_downsample_modules_0_parameters_bias_]
+    %l_self_modules_layer4_modules_1_modules_conv1_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_1_modules_conv1_parameters_weight_]
+    %l_self_modules_layer4_modules_1_modules_conv1_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_1_modules_conv1_parameters_bias_]
+    %l_self_modules_layer4_modules_1_modules_conv2_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_1_modules_conv2_parameters_weight_]
+    %l_self_modules_layer4_modules_1_modules_conv2_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_layer4_modules_1_modules_conv2_parameters_bias_]
+    %l_self_modules_fc_parameters_weight_ : [num_users=1] = placeholder[target=l_self_modules_fc_parameters_weight_]
+    %l_self_modules_fc_parameters_bias_ : [num_users=1] = placeholder[target=l_self_modules_fc_parameters_bias_]
+    %convolution : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%l_x_, %l_self_modules_conv1_parameters_weight_, %l_self_modules_conv1_parameters_bias_, [2, 2], [3, 3], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution,), kwargs = {})
+    %max_pool2d_with_indices : [num_users=1] = call_function[target=torch.ops.aten.max_pool2d_with_indices.default](args = (%relu, [3, 3], [2, 2], [1, 1]), kwargs = {})
+    %getitem : [num_users=2] = call_function[target=operator.getitem](args = (%max_pool2d_with_indices, 0), kwargs = {})
+    %convolution_1 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%getitem, %l_self_modules_layer1_modules_0_modules_conv1_parameters_weight_, %l_self_modules_layer1_modules_0_modules_conv1_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu_1 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution_1,), kwargs = {})
+    %convolution_2 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_1, %l_self_modules_layer1_modules_0_modules_conv2_parameters_weight_, %l_self_modules_layer1_modules_0_modules_conv2_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %add : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%convolution_2, %getitem), kwargs = {})
+    %relu_2 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%add,), kwargs = {})
+    %convolution_3 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_2, %l_self_modules_layer1_modules_1_modules_conv1_parameters_weight_, %l_self_modules_layer1_modules_1_modules_conv1_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu_3 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution_3,), kwargs = {})
+    %convolution_4 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_3, %l_self_modules_layer1_modules_1_modules_conv2_parameters_weight_, %l_self_modules_layer1_modules_1_modules_conv2_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %add_1 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%convolution_4, %relu_2), kwargs = {})
+    %relu_4 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%add_1,), kwargs = {})
+    %convolution_5 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_4, %l_self_modules_layer2_modules_0_modules_conv1_parameters_weight_, %l_self_modules_layer2_modules_0_modules_conv1_parameters_bias_, [2, 2], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu_5 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution_5,), kwargs = {})
+    %convolution_6 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_5, %l_self_modules_layer2_modules_0_modules_conv2_parameters_weight_, %l_self_modules_layer2_modules_0_modules_conv2_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %convolution_7 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_4, %l_self_modules_layer2_modules_0_modules_downsample_modules_0_parameters_weight_, %l_self_modules_layer2_modules_0_modules_downsample_modules_0_parameters_bias_, [2, 2], [0, 0], [1, 1], False, [0, 0], 1), kwargs = {})
+    %add_2 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%convolution_6, %convolution_7), kwargs = {})
+    %relu_6 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%add_2,), kwargs = {})
+    %convolution_8 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_6, %l_self_modules_layer2_modules_1_modules_conv1_parameters_weight_, %l_self_modules_layer2_modules_1_modules_conv1_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu_7 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution_8,), kwargs = {})
+    %convolution_9 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_7, %l_self_modules_layer2_modules_1_modules_conv2_parameters_weight_, %l_self_modules_layer2_modules_1_modules_conv2_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %add_3 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%convolution_9, %relu_6), kwargs = {})
+    %relu_8 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%add_3,), kwargs = {})
+    %convolution_10 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_8, %l_self_modules_layer3_modules_0_modules_conv1_parameters_weight_, %l_self_modules_layer3_modules_0_modules_conv1_parameters_bias_, [2, 2], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu_9 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution_10,), kwargs = {})
+    %convolution_11 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_9, %l_self_modules_layer3_modules_0_modules_conv2_parameters_weight_, %l_self_modules_layer3_modules_0_modules_conv2_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %convolution_12 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_8, %l_self_modules_layer3_modules_0_modules_downsample_modules_0_parameters_weight_, %l_self_modules_layer3_modules_0_modules_downsample_modules_0_parameters_bias_, [2, 2], [0, 0], [1, 1], False, [0, 0], 1), kwargs = {})
+    %add_4 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%convolution_11, %convolution_12), kwargs = {})
+    %relu_10 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%add_4,), kwargs = {})
+    %convolution_13 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_10, %l_self_modules_layer3_modules_1_modules_conv1_parameters_weight_, %l_self_modules_layer3_modules_1_modules_conv1_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu_11 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution_13,), kwargs = {})
+    %convolution_14 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_11, %l_self_modules_layer3_modules_1_modules_conv2_parameters_weight_, %l_self_modules_layer3_modules_1_modules_conv2_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %add_5 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%convolution_14, %relu_10), kwargs = {})
+    %relu_12 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%add_5,), kwargs = {})
+    %convolution_15 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_12, %l_self_modules_layer4_modules_0_modules_conv1_parameters_weight_, %l_self_modules_layer4_modules_0_modules_conv1_parameters_bias_, [2, 2], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu_13 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution_15,), kwargs = {})
+    %convolution_16 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_13, %l_self_modules_layer4_modules_0_modules_conv2_parameters_weight_, %l_self_modules_layer4_modules_0_modules_conv2_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %convolution_17 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_12, %l_self_modules_layer4_modules_0_modules_downsample_modules_0_parameters_weight_, %l_self_modules_layer4_modules_0_modules_downsample_modules_0_parameters_bias_, [2, 2], [0, 0], [1, 1], False, [0, 0], 1), kwargs = {})
+    %add_6 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%convolution_16, %convolution_17), kwargs = {})
+    %relu_14 : [num_users=2] = call_function[target=torch.ops.aten.relu.default](args = (%add_6,), kwargs = {})
+    %convolution_18 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_14, %l_self_modules_layer4_modules_1_modules_conv1_parameters_weight_, %l_self_modules_layer4_modules_1_modules_conv1_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %relu_15 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%convolution_18,), kwargs = {})
+    %convolution_19 : [num_users=1] = call_function[target=torch.ops.aten.convolution.default](args = (%relu_15, %l_self_modules_layer4_modules_1_modules_conv2_parameters_weight_, %l_self_modules_layer4_modules_1_modules_conv2_parameters_bias_, [1, 1], [1, 1], [1, 1], False, [0, 0], 1), kwargs = {})
+    %add_7 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%convolution_19, %relu_14), kwargs = {})
+    %relu_16 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%add_7,), kwargs = {})
+    %_adaptive_avg_pool2d : [num_users=1] = call_function[target=torch.ops.aten._adaptive_avg_pool2d.default](args = (%relu_16, [1, 1]), kwargs = {})
+    %view : [num_users=1] = call_function[target=torch.ops.aten.view.default](args = (%_adaptive_avg_pool2d, [1, 512]), kwargs = {})
+    %permute : [num_users=1] = call_function[target=torch.ops.aten.permute.default](args = (%l_self_modules_fc_parameters_weight_, [1, 0]), kwargs = {})
+    %_to_copy : [num_users=1] = call_function[target=torch.ops.aten._to_copy.default](args = (%l_self_modules_fc_parameters_bias_,), kwargs = {dtype: torch.float32})
+    %_to_copy_1 : [num_users=1] = call_function[target=torch.ops.aten._to_copy.default](args = (%view,), kwargs = {dtype: torch.float32})
+    %_to_copy_2 : [num_users=1] = call_function[target=torch.ops.aten._to_copy.default](args = (%permute,), kwargs = {dtype: torch.float32})
+    %mm : [num_users=1] = call_function[target=torch.ops.aten.mm.default](args = (%_to_copy_1, %_to_copy_2), kwargs = {})
+    %mul : [num_users=1] = call_function[target=torch.ops.aten.mul.Tensor](args = (%mm, 1), kwargs = {})
+    %mul_1 : [num_users=1] = call_function[target=torch.ops.aten.mul.Tensor](args = (%_to_copy, 1), kwargs = {})
+    %add_8 : [num_users=1] = call_function[target=torch.ops.aten.add.Tensor](args = (%mul, %mul_1), kwargs = {})
+    %_to_copy_3 : [num_users=1] = call_function[target=torch.ops.aten._to_copy.default](args = (%add_8,), kwargs = {dtype: torch.bfloat16})
+    return (_to_copy_3,)
+source:
+    convolution          ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:268 x = self.conv1(x)
+    relu                 ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:270 x = self.relu(x)
+    max_pool2d_with_indices ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:271 x = self.maxpool(x)
+    getitem              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:271 x = self.maxpool(x)
+    convolution_1        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:92 out = self.conv1(x)
+    relu_1               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:94 out = self.relu(out)
+    convolution_2        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+    add                  ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:102 out += identity
+    relu_2               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:103 out = self.relu(out)
+    convolution_3        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:92 out = self.conv1(x)
+    relu_3               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:94 out = self.relu(out)
+    convolution_4        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+    add_1                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:102 out += identity
+    relu_4               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:103 out = self.relu(out)
+    convolution_5        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:92 out = self.conv1(x)
+    relu_5               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:94 out = self.relu(out)
+    convolution_6        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+    convolution_7        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:100 identity = self.downsample(x)
+    add_2                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:102 out += identity
+    relu_6               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:103 out = self.relu(out)
+    convolution_8        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:92 out = self.conv1(x)
+    relu_7               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:94 out = self.relu(out)
+    convolution_9        ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+    add_3                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:102 out += identity
+    relu_8               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:103 out = self.relu(out)
+    convolution_10       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:92 out = self.conv1(x)
+    relu_9               ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:94 out = self.relu(out)
+    convolution_11       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+    convolution_12       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:100 identity = self.downsample(x)
+    add_4                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:102 out += identity
+    relu_10              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:103 out = self.relu(out)
+    convolution_13       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:92 out = self.conv1(x)
+    relu_11              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:94 out = self.relu(out)
+    convolution_14       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+    add_5                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:102 out += identity
+    relu_12              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:103 out = self.relu(out)
+    convolution_15       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:92 out = self.conv1(x)
+    relu_13              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:94 out = self.relu(out)
+    convolution_16       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+    convolution_17       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:100 identity = self.downsample(x)
+    add_6                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:102 out += identity
+    relu_14              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:103 out = self.relu(out)
+    convolution_18       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:92 out = self.conv1(x)
+    relu_15              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:94 out = self.relu(out)
+    convolution_19       ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:96 out = self.conv2(out)
+    add_7                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:102 out += identity
+    relu_16              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:103 out = self.relu(out)
+    _adaptive_avg_pool2d ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:278 x = self.avgpool(x)
+    view                 ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:279 x = torch.flatten(x, 1)
+    permute              ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+    _to_copy             ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+    _to_copy_1           ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+    _to_copy_2           ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+    mm                   ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+    mul                  ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+    mul_1                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+    add_8                ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+    _to_copy_3           ../venv/lib/python3.12/site-packages/torchvision/models/resnet.py:280 x = self.fc(x)
+compile error:
+(cache at /root/.cache/furiosa/compiler/0030b13c405bb8d2)
+
+Caused by:
+   0: O4392 lowering failed: TransposedLower[bf16]([]|[Broadcast=1]|[0_1=512:4608, 1_1=512:9, 2_1=3:3, 3_1=3:1])
+      -> [] | [] | [0_32=8, 1_64=8] | [0_256=2, 0_1=32, 1_1=64, 2_1=3] | [3_1=3](4)
+      -> (E) [0_256=2]|[]|[]|[0_32=8, 1_64=8]|[0_1=32, 2_1=3, 3_1=3]|[1_1=64](8) @ [0=512, 1=512, 2=3, 3=3]
+   1: while verifying LowLevelTailCrop
+   2: verification of operator failed:
+      LowLevelTailCrop
+      broadcast_axes: [AxisIndex(0), AxisIndex(2), AxisIndex(4), AxisIndex(6)]
+      name: 
+
+      input tensors: 1
+        input T7: [] | [] | [A3_1=8, E_12=1, A2_1=8, E_12=1] | [A1_1=32, E_12=1, A0_1=16, E_3=4, E_1=3] | [TAIL_1=8](4), 6291456 B, bf16, sram
+        source: unknown
+        total bytes: 6291456
+      output tensors: 1
+        output T12: [] | [] | [A3_1=8, E_12=1, A2_1=8, E_12=1] | [A1_1=32, E_12=1, A0_1=16, E_3=4, E_1=3] | [TAIL_1=4](4), 3145728 B, bf16, sram
+        source: unknown
+        total bytes: 3145728
+   3: Condition failed: `tensors.try_get(input)?
+      .element_type.size_in_bytes_with_length(input_shape.slice_volume()) <=
+      u16::MAX as usize`
+
+Location:
+    /usr/local/cargo/git/checkouts/npu-tools-dec42ebd45bb55cf/fc43f6a7/crates/global-compiler/src/lib.rs:65:30

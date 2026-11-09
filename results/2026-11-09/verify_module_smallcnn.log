@@ -1,0 +1,6 @@
+Running NPU Eager...
+Running NPU Compile...
+CPU vs Eager: PASS, max_diff=0.00000000
+CPU vs Compile: PASS, max_diff=0.00000000
+Eager vs Compile: PASS, max_diff=0.00000000
+SUCCESS: smallcnn module verified on NPU.

@@ -6,6 +6,11 @@ from furiosa.torch import config
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--output", type=Path, required=True)
+parser.add_argument(
+    "--model",
+    choices=["smallcnn", "resnet18_chunked"],
+    default="smallcnn",
+)
 args = parser.parse_args()
 
 with config.cpu_fallback(False):
@@ -19,7 +24,7 @@ with config.cpu_fallback(False):
 
     from models.project_models import build_model_pair, make_input
 
-    reference, model = build_model_pair("smallcnn", seed=42)
+    reference, model = build_model_pair(args.model, seed=42)
     device = torch.device("furiosa:0")
     model = model.to(device)
 
@@ -49,8 +54,9 @@ with config.cpu_fallback(False):
 
     results = []
 
-    for batch in [1, 4, 8, 16]:
-        x_cpu = make_input("smallcnn", batch=batch, seed=43)
+    batches = [1, 4, 8, 16] if args.model == "smallcnn" else [1]
+    for batch in batches:
+        x_cpu = make_input(args.model, batch=batch, seed=43)
         with torch.inference_mode():
             reference_output = reference(x_cpu).float()
         x = x_cpu.to(device)
@@ -146,7 +152,7 @@ report = {
         "torchvision": version("torchvision"),
         "furiosa_torch": version("furiosa-torch"),
     },
-    "model": "SmallCNN",
+    "model": "SmallCNN" if args.model == "smallcnn" else args.model,
     "device": "furiosa:0",
     "dtype": "bfloat16",
     "seed": 42,

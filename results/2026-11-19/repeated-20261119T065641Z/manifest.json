@@ -1,0 +1,80 @@
+{
+  "repetitions": 5,
+  "models": [
+    "smallcnn",
+    "resnet18_chunked"
+  ],
+  "protocol": "Sequential fresh processes; persistent cache uncontrolled",
+  "runs": [
+    {
+      "model": "smallcnn",
+      "repetition": 1,
+      "exit_code": 0,
+      "report": "smallcnn-run-01.json",
+      "log": "smallcnn-run-01.log"
+    },
+    {
+      "model": "smallcnn",
+      "repetition": 2,
+      "exit_code": 0,
+      "report": "smallcnn-run-02.json",
+      "log": "smallcnn-run-02.log"
+    },
+    {
+      "model": "smallcnn",
+      "repetition": 3,
+      "exit_code": 0,
+      "report": "smallcnn-run-03.json",
+      "log": "smallcnn-run-03.log"
+    },
+    {
+      "model": "smallcnn",
+      "repetition": 4,
+      "exit_code": 0,
+      "report": "smallcnn-run-04.json",
+      "log": "smallcnn-run-04.log"
+    },
+    {
+      "model": "smallcnn",
+      "repetition": 5,
+      "exit_code": 0,
+      "report": "smallcnn-run-05.json",
+      "log": "smallcnn-run-05.log"
+    },
+    {
+      "model": "resnet18_chunked",
+      "repetition": 1,
+      "exit_code": 0,
+      "report": "resnet18_chunked-run-01.json",
+      "log": "resnet18_chunked-run-01.log"
+    },
+    {
+      "model": "resnet18_chunked",
+      "repetition": 2,
+      "exit_code": 0,
+      "report": "resnet18_chunked-run-02.json",
+      "log": "resnet18_chunked-run-02.log"
+    },
+    {
+      "model": "resnet18_chunked",
+      "repetition": 3,
+      "exit_code": 0,
+      "report": "resnet18_chunked-run-03.json",
+      "log": "resnet18_chunked-run-03.log"
+    },
+    {
+      "model": "resnet18_chunked",
+      "repetition": 4,
+      "exit_code": 0,
+      "report": "resnet18_chunked-run-04.json",
+      "log": "resnet18_chunked-run-04.log"
+    },
+    {
+      "model": "resnet18_chunked",
+      "repetition": 5,
+      "exit_code": 0,
+      "report": "resnet18_chunked-run-05.json",
+      "log": "resnet18_chunked-run-05.log"
+    }
+  ]
+}

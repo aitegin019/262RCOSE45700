@@ -1,0 +1,198 @@
+{
+  "source_manifest": "manifest.json",
+  "percentile_method": "Pooled warm samples; linear interpolation, inclusive",
+  "variation_method": "Sample standard deviation of run means / their mean",
+  "throughput_scope": "Sequential batches; model execution and output copy to CPU",
+  "results": [
+    {
+      "model": "resnet18_chunked",
+      "batch_size": 1,
+      "mode": "compile",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 6.265488676726818,
+      "warm_p50_ms": 6.264213472604752,
+      "warm_p95_ms": 6.2866740161553025,
+      "throughput_images_per_second": 159.60447007342043,
+      "run_means_ms": [
+        6.265358617529273,
+        6.260294485837221,
+        6.265842700377107,
+        6.269032908603549,
+        6.266914671286941
+      ],
+      "run_mean_cv_percent": 0.05154316782759763
+    },
+    {
+      "model": "resnet18_chunked",
+      "batch_size": 1,
+      "mode": "eager",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 11.954570695757866,
+      "warm_p50_ms": 11.93309505470097,
+      "warm_p95_ms": 12.207224289886653,
+      "throughput_images_per_second": 83.65001349273501,
+      "run_means_ms": [
+        11.876357812434435,
+        12.119138026610017,
+        12.107209721580148,
+        11.853353828191757,
+        11.816794089972973
+      ],
+      "run_mean_cv_percent": 1.2245914940065397
+    },
+    {
+      "model": "smallcnn",
+      "batch_size": 1,
+      "mode": "compile",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 0.42601998895406723,
+      "warm_p50_ms": 0.42563932947814465,
+      "warm_p95_ms": 0.4341644933447242,
+      "throughput_images_per_second": 2347.3076990005234,
+      "run_means_ms": [
+        0.4257711488753557,
+        0.42925460264086723,
+        0.4220175463706255,
+        0.4264590982347727,
+        0.426597548648715
+      ],
+      "run_mean_cv_percent": 0.610645069946698
+    },
+    {
+      "model": "smallcnn",
+      "batch_size": 1,
+      "mode": "eager",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 0.8784112185239792,
+      "warm_p50_ms": 0.8737589232623577,
+      "warm_p95_ms": 0.9688471909612417,
+      "throughput_images_per_second": 1138.4189761150024,
+      "run_means_ms": [
+        0.8753995224833488,
+        0.8926487900316715,
+        0.8646289724856615,
+        0.8830837998539209,
+        0.8762950077652931
+      ],
+      "run_mean_cv_percent": 1.1776453572510364
+    },
+    {
+      "model": "smallcnn",
+      "batch_size": 4,
+      "mode": "compile",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 0.6460476815700531,
+      "warm_p50_ms": 0.6464864127337933,
+      "warm_p95_ms": 0.6567910313606262,
+      "throughput_images_per_second": 6191.493467291805,
+      "run_means_ms": [
+        0.6420373823493719,
+        0.6493925116956234,
+        0.6490642670542002,
+        0.6383855454623699,
+        0.6513587012887001
+      ],
+      "run_mean_cv_percent": 0.8593326654325004
+    },
+    {
+      "model": "smallcnn",
+      "batch_size": 4,
+      "mode": "eager",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 1.1811667270958424,
+      "warm_p50_ms": 1.1800569482147694,
+      "warm_p95_ms": 1.2023404240608215,
+      "throughput_images_per_second": 3386.482118265283,
+      "run_means_ms": [
+        1.171585377305746,
+        1.1882102210074663,
+        1.1811439227312803,
+        1.170267891138792,
+        1.194626223295927
+      ],
+      "run_mean_cv_percent": 0.8893105449012499
+    },
+    {
+      "model": "smallcnn",
+      "batch_size": 8,
+      "mode": "compile",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 1.1002563275396824,
+      "warm_p50_ms": 1.099725952371955,
+      "warm_p95_ms": 1.1112109990790486,
+      "throughput_images_per_second": 7271.0329400141245,
+      "run_means_ms": [
+        1.094359178096056,
+        1.0990497004240751,
+        1.0991171281784773,
+        1.1013310961425304,
+        1.107424534857273
+      ],
+      "run_mean_cv_percent": 0.43128306008905126
+    },
+    {
+      "model": "smallcnn",
+      "batch_size": 8,
+      "mode": "eager",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 1.8123885057866573,
+      "warm_p50_ms": 1.8059380818158388,
+      "warm_p95_ms": 1.8444238463416696,
+      "throughput_images_per_second": 4414.064630435098,
+      "run_means_ms": [
+        1.8080563005059958,
+        1.8228666111826897,
+        1.7955728527158499,
+        1.7946493159979582,
+        1.8407974485307932
+      ],
+      "run_mean_cv_percent": 1.080189491101246
+    },
+    {
+      "model": "smallcnn",
+      "batch_size": 16,
+      "mode": "compile",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 1.978777615353465,
+      "warm_p50_ms": 1.971640158444643,
+      "warm_p95_ms": 2.0208946196362376,
+      "throughput_images_per_second": 8085.799978661044,
+      "run_means_ms": [
+        2.0049690920859575,
+        1.9902275409549475,
+        1.9788135681301355,
+        1.9518540892750025,
+        1.9680237863212824
+      ],
+      "run_mean_cv_percent": 1.0287623553301797
+    },
+    {
+      "model": "smallcnn",
+      "batch_size": 16,
+      "mode": "eager",
+      "runs": 5,
+      "samples": 250,
+      "warm_mean_ms": 2.9060540962964296,
+      "warm_p50_ms": 2.896404592320323,
+      "warm_p95_ms": 2.9349338728934526,
+      "throughput_images_per_second": 5505.747474002952,
+      "run_means_ms": [
+        2.928594285622239,
+        2.9040667228400707,
+        2.8833740018308163,
+        2.887449711561203,
+        2.926785759627819
+      ],
+      "run_mean_cv_percent": 0.7304364513294107
+    }
+  ]
+}

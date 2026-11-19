@@ -1,0 +1,18 @@
+Batch,Eager_ms,Compile_ms,Speedup
+Batch 1 first call: Eager=2551.963 ms, Compile=577.076 ms
+Batch 1: max_diff=0.000000, outputs_close=True
+CPU checks: Eager=True, Compile=True
+1,0.875,0.426,2.06
+Batch 4 first call: Eager=2541.884 ms, Compile=450.302 ms
+Batch 4: max_diff=0.000000, outputs_close=True
+CPU checks: Eager=True, Compile=True
+4,1.172,0.642,1.82
+Batch 8 first call: Eager=2643.364 ms, Compile=446.971 ms
+Batch 8: max_diff=0.000000, outputs_close=True
+CPU checks: Eager=True, Compile=True
+8,1.808,1.094,1.65
+Batch 16 first call: Eager=2590.757 ms, Compile=342.247 ms
+Batch 16: max_diff=0.000000, outputs_close=True
+CPU checks: Eager=True, Compile=True
+16,2.929,2.005,1.46
+Saved 4 results to /root/aitegin-resnet-benchmark/repeated-20261119T065641Z/smallcnn-run-01.json

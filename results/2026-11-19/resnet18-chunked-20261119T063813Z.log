@@ -1,0 +1,11 @@
+Chunked: layer4.0.conv1
+Chunked: layer4.0.conv2
+Chunked: layer4.0.downsample.0
+Chunked: layer4.1.conv1
+Chunked: layer4.1.conv2
+Batch,Eager_ms,Compile_ms,Speedup
+Batch 1 first call: Eager=7551.520 ms, Compile=1657.502 ms
+Batch 1: max_diff=0.015625, outputs_close=True
+CPU checks: Eager=True, Compile=True
+1,11.923,6.272,1.90
+Saved 1 results to resnet18-chunked-20261119T063813Z.json

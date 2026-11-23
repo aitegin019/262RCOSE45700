@@ -1,0 +1,37 @@
+
+Testing seed=43, shape=(1, 4, 128, 64)
+Running NPU Eager...
+Running NPU Compile...
+CPU vs Eager: max_diff=0.00048828, finite=True, outputs_close=True
+CPU vs Compile: max_diff=0.00195312, finite=True, outputs_close=True
+Eager vs Compile: max_diff=0.00195312, finite=True, outputs_close=True
+
+Testing seed=44, shape=(1, 4, 128, 64)
+Running NPU Eager...
+Running NPU Compile...
+CPU vs Eager: max_diff=0.00097656, finite=True, outputs_close=True
+CPU vs Compile: max_diff=0.00195312, finite=True, outputs_close=True
+Eager vs Compile: max_diff=0.00195312, finite=True, outputs_close=True
+
+Testing seed=45, shape=(1, 4, 128, 64)
+Running NPU Eager...
+Running NPU Compile...
+CPU vs Eager: max_diff=0.00097656, finite=True, outputs_close=True
+CPU vs Compile: max_diff=0.00000000, finite=True, outputs_close=True
+Eager vs Compile: max_diff=0.00097656, finite=True, outputs_close=True
+
+Testing seed=46, shape=(1, 4, 128, 64)
+Running NPU Eager...
+Running NPU Compile...
+CPU vs Eager: max_diff=0.00000000, finite=True, outputs_close=True
+CPU vs Compile: max_diff=0.00000000, finite=True, outputs_close=True
+Eager vs Compile: max_diff=0.00000000, finite=True, outputs_close=True
+
+Testing seed=47, shape=(1, 4, 128, 64)
+Running NPU Eager...
+Running NPU Compile...
+CPU vs Eager: max_diff=0.00048828, finite=True, outputs_close=True
+CPU vs Compile: max_diff=0.00000000, finite=True, outputs_close=True
+Eager vs Compile: max_diff=0.00048828, finite=True, outputs_close=True
+
+SUCCESS: all five attention inputs passed with CPU fallback disabled.
